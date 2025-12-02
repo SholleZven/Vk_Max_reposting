@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@maxhub/max-bot-api": "^0.2.1",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.2",
+    "ts": "^0.0.0",
+    "ts-node-dev": "^2.0.0",
+    "vk-io": "^4.10.1",
+    "winston": "^3.18.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
