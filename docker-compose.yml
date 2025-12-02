@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: backend
+    restart: unless-stopped
+    volumes:
+      - ../logs:/code/logs
+      - ../last_id.txt:/code/last_id.txt

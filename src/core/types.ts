@@ -23,11 +23,11 @@ export type VKAttachment = VKAttachmentPhoto | VKAttachmentVideo | VKAttachmentL
 // Основной пост
 export interface VKPost {
   id: number;
-  owner_id: number;        // владелец поста
-  from_id?: number;        // автор репоста
+  owner_id: number;
+  from_id?: number;
   text: string;
   attachments?: VKAttachment[];
-  copy_history?: VKRepost[]; // элементы репоста
+  copy_history?: VKRepost[];
   marked_as_ads?: boolean;
   copyright?: any;
 }
