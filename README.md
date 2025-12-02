@@ -1,14 +1,11 @@
-# Ручной запуск
+### Ручной запуск
 
-## npm install or npm ci
-## npx tsc
-## node dist/index.js
+1) npm install or npm ci
+2) npx tsc
+3) node dist/index.js
 
 
-# Запуск через Docker
+###  Запуск через Docker
 
-## 
-## 
-## 
 
 
