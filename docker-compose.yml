@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    container_name: backend
+    container_name: Vk_Max_bot
     restart: unless-stopped
     volumes:
       - ../logs:/code/logs
