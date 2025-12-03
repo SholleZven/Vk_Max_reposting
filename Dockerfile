@@ -1,8 +1,8 @@
-FROM node:20-alpine AS backend
+FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN npx tsc
 ENV NODE_ENV=production
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/index.js"]
