@@ -1,5 +1,5 @@
 import { getPostsFromVK } from "./vkService";
-import { buildMessage } from "../utils/textUtils";
+import { buildMessage, extractMedia } from "../utils/textUtils";
 import { sendMessageToMax } from "../bot/maxBot";
 import { readLastId, writeLastId } from "../utils/lastId";
 import { VKPost } from "../core/types";
@@ -18,7 +18,8 @@ export async function repostFromVK() {
     if (config.SKIP_COPYRIGHTED_POST && post.copyright) continue;
 
     const message = buildMessage(post);
-    await sendMessageToMax(message);
+    const media = extractMedia(post);
+    await sendMessageToMax(message, media);
   }
 
   writeLastId(newLastId);
