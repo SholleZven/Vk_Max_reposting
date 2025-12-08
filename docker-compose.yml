@@ -6,5 +6,5 @@ services:
     container_name: Vk_Max_bot
     restart: unless-stopped
     volumes:
-      - logs:/code/logs
-      - last_id.txt:/code/last_id.txt
+      - ./logs:/code/logs
+      - ./last_id.txt:/code/last_id.txt
