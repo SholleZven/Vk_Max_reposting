@@ -13,12 +13,28 @@ export interface VKAttachmentVideo {
   };
 }
 
+export interface VKAttachmentFile {
+  type: "doc";
+  doc: {
+    title: string;
+    url: string;
+    size: number;
+  }
+}
+
+export interface DownloadedDocument {
+  filename: string;
+  mime: string;
+  size: number;
+  buffer: Buffer;
+}
+
 export interface VKAttachmentLink {
   type: "link";
   link: { url: string };
 }
 
-export type VKAttachment = VKAttachmentPhoto | VKAttachmentVideo | VKAttachmentLink;
+export type VKAttachment = VKAttachmentPhoto | VKAttachmentVideo | VKAttachmentLink | VKAttachmentFile;
 
 // Основной пост
 export interface VKPost {

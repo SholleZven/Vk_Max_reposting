@@ -1,4 +1,6 @@
-import { VKPost, VKAttachment } from "../core/types";
+import axios from "axios";
+import { log } from "../core/logger";
+import { VKPost, VKAttachment, DownloadedDocument } from "../core/types";
 
 export function buildMessage(post: VKPost): string {
   let text = post.text;
@@ -37,4 +39,36 @@ export function extractMedia(post: VKPost): string[] {
   }
 
   return media;
+}
+
+export async function extractDocuments(post: VKPost): Promise<DownloadedDocument[]> {
+  const documents: DownloadedDocument[] = [];
+
+  if (!post.attachments) return documents;
+
+  for (const att of post.attachments) {
+    if (att.type !== "doc") continue;
+
+    const { url, size, title } = att.doc;
+
+    if (size > 50_000_000) {
+      log.error(`Document ${title} skipped — size exceeds 50MB`);
+      continue;
+    }
+
+    try {
+      const response = await axios.get(url, { responseType: "arraybuffer" });
+
+      documents.push({
+        filename: title,
+        mime: response.headers["content-type"] || "application/octet-stream",
+        size,
+        buffer: Buffer.from(response.data)
+      });
+    } catch (e) {
+      log.error(`Failed to download document: ${title}`, e);
+    }
+  }
+
+  return documents;
 }

@@ -1,5 +1,5 @@
 import { getPostsFromVK } from "./vkService";
-import { buildMessage, extractMedia } from "../utils/textUtils";
+import { buildMessage, extractDocuments, extractMedia } from "../utils/textUtils";
 import { sendMessageToMax } from "../bot/maxBot";
 import { readLastId, writeLastId } from "../utils/lastId";
 import { VKPost } from "../core/types";
@@ -19,7 +19,8 @@ export async function repostFromVK() {
 
     const message = buildMessage(post);
     const media = extractMedia(post);
-    await sendMessageToMax(message, media);
+    const document =  await extractDocuments(post);
+    await sendMessageToMax(message, media, document);
   }
 
   writeLastId(newLastId);
