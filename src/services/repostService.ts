@@ -19,7 +19,10 @@ export async function repostFromVK() {
 
     const message = buildMessage(post);
     const media = extractMedia(post);
-    await sendMessageToMax(message, media);
+
+    const result = media.length ? [media[0]] : []; // на время пока API поддерживет только одно вложение
+    
+    await sendMessageToMax(message, result);
   }
 
   writeLastId(newLastId);
