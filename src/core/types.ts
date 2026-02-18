@@ -30,6 +30,7 @@ export interface VKPost {
   copy_history?: VKRepost[];
   marked_as_ads?: boolean;
   copyright?: any;
+  is_pinned: number;
 }
 
 // Репост
