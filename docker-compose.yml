@@ -8,3 +8,9 @@ services:
     volumes:
       - ./logs:/app/logs
       - ./last_id.txt:/app/last_id.txt
+      - ./certs:/app/certs:ro
+    env_file:
+      - .env
+    environment:
+      # Указываем Node.js где искать корневой сертификат
+      - NODE_EXTRA_CA_CERTS=/app/certs/russian_trusted_root_ca_pem.crt
