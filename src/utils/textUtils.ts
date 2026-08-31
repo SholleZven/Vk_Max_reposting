@@ -6,7 +6,7 @@ export function buildMessage(post: VKPost): string {
   if (post.copy_history?.length) {
     const repost = post.copy_history[0];
     const link = `https://vk.com/wall${repost.from_id}_${repost.id}`;
-    text += `\n\nREPOST: ${link}`;
+    text += `\n\n REPOST ↓ ${link}\n\n ${repost.text}`
   }
 
   return text;
